@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { StyledButton } from '../../atoms/StyledButtons'
 import Instructions from '../Instructions'
+import SendItemContext from '../../providers/SendItemProvider'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { useToast } from '@chakra-ui/react'
 
 const BDFStyles = styled.div`
     width: 100%;
@@ -24,11 +28,17 @@ const BDFStyles = styled.div`
         display: grid;
         grid-template-columns: auto auto;
         grid-gap: 25px 10px; 
-        .single-input{
+       div{
+        width: 100%;
+        .single-input{ 
+            width: 100%;
             border: .5px solid #CCCCCC;
             border-radius: 5px;
             background-color: #F7F7F7;
             padding: .7rem 1rem;
+            &.error{
+                border: 1px solid red;
+            }
             &::placeholder{
                 font-size: .8rem;
                 color: #909090;
@@ -37,6 +47,7 @@ const BDFStyles = styled.div`
                 outline: 1px solid #FBA819 ;
             }
         }
+       }
        .input-group{
         display: flex;
          align-items: center;
@@ -50,9 +61,13 @@ const BDFStyles = styled.div`
         input{
             width: 100%;
             border-left: .5px solid #CCCCCC;
-            border-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
                 background-color: #F7F7F7;
                 padding: .7rem 1rem;
+                &.error{
+                    border: 1px solid red;
+                }
                 &::placeholder{
                     font-size: .8rem;
                     color: #909090;
@@ -91,63 +106,167 @@ const BDFStyles = styled.div`
         }
     }
 `
+const InputWrapper= styled.div`
+.errorText{
+    color: red;
+    font-size: .7rem;
+}
+`;
 
 function SendDelivery() {
+
+    const {items, setItems} = useContext(SendItemContext);
+    const phoneRegExp = /^[/+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,8}$/
+    const successToast = useToast();
+    const failedToast = useToast();
+
+    const formik = useFormik({
+        initialValues: {
+        source_address: '',
+        source_address_description: '',
+        destination_address: '',
+        destination_address_description: '',
+        email: '',
+        phone: ''
+        },
+        validationSchema: Yup.object({
+          source_address: Yup.string()
+                  .label('Source Address')
+                  .required(),
+          source_address_description: Yup.string()
+                  .label('Source Address Description'),
+          destination_address: Yup.string()
+                  .label('Destination Address')
+                  .required(),
+          destination_address_description: Yup.string()
+                  .label('Destination Address Description'),
+          email: Yup.string()
+                .email()
+                .label('Email')
+                .required(),
+         phone: Yup.string()
+                .matches(phoneRegExp, 'Phone number is not valid')
+                .label('Phone Number')
+                .required(),
+        }),
+       
+        onSubmit: function (values, {resetForm}) {
+            const allValues = {
+                items : [...items], 
+                ...values
+            }
+        //   console.log(allValues)
+          successToast({
+            title: ' Request Successful.',
+            description: "Your oder will be processed.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          });
+          setItems([])
+            resetForm();
+        }
+      })
+
   return (
    <BDFStyles>
+    {items.length > 0 && 
+        <>
          <h3 className="form-head">Delivery details</h3>
             <div className="hr"></div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
            <div className="form-input">
-          <div className="input-group">
+         <InputWrapper>
+         <div className="input-group">
             <h4>From:</h4>
           <input 
+                 className={formik.touched.source_address && formik.errors.source_address ? 'error' : ''}
+                 onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.source_address}
                 type="text"
-                name='address'
-                id='address'
+                name='source_address'
+                id='source_address'
                 placeholder='Your home Address'/>
           </div>
-          <div className="input-group">
+          {formik.touched.source_address && formik.errors.source_address && (
+               <span className='errorText'>{formik.errors.source_address}</span>
+               )}
+         </InputWrapper>
+         <InputWrapper>
+         <div className="input-group">
             <h4>From:</h4>
           <input 
+           className={formik.touched.source_address_description && formik.errors.source_address_description ? 'error' : ''}
+           onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.source_address_description}
                 type="text"
-                name='address_desc'
-                id='address_desc'
+                name='source_address_description'
+                id='source_address_description'
                 placeholder='Your home Address description (optional)'/>
           </div>
-         
-            <input 
-            className='single-input'
+          {formik.touched.source_address_description && formik.errors.source_address_description && (
+               <span className='errorText'>{formik.errors.source_address_description}</span>
+               )}
+         </InputWrapper>
+         <InputWrapper>
+         <input 
+            className={formik.touched.email && formik.errors.email ? 'error single-input' : 'single-input'}
+            onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email}
                 type="email"
                 name='email'
                 id='email'
                 placeholder='Reachable Email Address'/>
-            <input 
-             className='single-input'
+                 {formik.touched.email && formik.errors.email && (
+               <span className='errorText'>{formik.errors.email}</span>
+               )}
+         </InputWrapper>
+         <InputWrapper>
+         <input 
+          className={formik.touched.phone && formik.errors.phone ? 'error single-input' : 'single-input'}
+          onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phone}
                 type="tel"
                 name='phone'
                 id='phone'
                 placeholder='Reachable Phone Number'/>
-          <div className="input-group">
+                 {formik.touched.phone && formik.errors.phone && (
+               <span className='errorText'>{formik.errors.phone}</span>
+               )}
+         </InputWrapper>
+           <InputWrapper>
+           <div className="input-group">
             <h4>To:</h4>
           <input 
+           className={formik.touched.destination_address && formik.errors.destination_address ? 'error' : ''}
+           onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.destination_address}
                 type="text"
-                name='dest_address'
-                id='dest_address'
+                name='destination_address'
+                id='destination_address'
                 placeholder='Destination home address'/>
           </div>
+          {formik.touched.destination_address && formik.errors.destination_address && (
+               <span className='errorText'>{formik.errors.destination_address}</span>
+               )}
+           </InputWrapper>
+            
+          <InputWrapper>
           <div className="input-group">
             <h4>To:</h4>
           <input 
+           className={formik.touched.destination_address_description && formik.errors.destination_address_description ? 'error' : ''}
+           onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.destination_address_description}
                 type="text"
-                name='dest_address_desc'
-                id='dest_address_dec'
+                name='destination_address_description'
+                id='destination_address_description'
                 placeholder='Destination home address description (optional)'/>
           </div>
+           {formik.touched.destination_address_description && formik.errors.destination_address_description && (
+               <span className='errorText'>{formik.errors.destination_address_description}</span>
+               )}
+          </InputWrapper>  
            </div>
             <Instructions />
-            <StyledButton>Proceed and Confirm</StyledButton>
+            <StyledButton type='submit'>Proceed and Confirm</StyledButton>
             </form>
+            </>
+            }
    </BDFStyles>
   )
 }

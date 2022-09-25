@@ -12,6 +12,7 @@ const HeroTopStyles = styled.section`
     display: flex;
     align-items: center;
    .heroLeft{
+    padding-left: 1rem;
     width: 50%;
     .hl-head{
         font-weight: 700;
@@ -115,7 +116,7 @@ function HeroTop() {
 
     const goToBuy = () => {
         const Buy = document.getElementById("buy-btn").offsetTop
-        console.log(Buy)
+        // console.log(Buy)
         window.scrollTo({
             top: Buy,
             left: 0,
@@ -125,7 +126,7 @@ function HeroTop() {
 
     const goToSell = () => {
         const Sell = document.getElementById("send-btn").offsetTop
-        console.log(Sell)
+        // console.log(Sell)
         window.scrollTo({
             top: Sell,
             left: 0,

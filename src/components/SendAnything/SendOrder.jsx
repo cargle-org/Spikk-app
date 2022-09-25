@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
-import avi from '../../assets/Images/avi.png'
 import deleteIcon from '../../assets/SVG/DeleteIcon.svg'
 import editIcon from '../../assets/SVG/EditIcon.svg'
 import clearIcon from '../../assets/SVG/ClearIcon.svg'
 import { StyledButton } from '../../atoms/StyledButtons'
+import SendItemContext from '../../providers/SendItemProvider'
 
 const BOStyles = styled.div`
 width: 100%;
@@ -50,7 +50,7 @@ table{
     thead{
         tr{
             th:nth-child(4){
-                width: 50%;
+                width: fit-content;
             }
             th:nth-child(3),th:nth-child(6), th:nth-child(7){
                 width: fit-content;
@@ -67,7 +67,7 @@ table{
         tr{
             td{ text-align-left;
                 font-size: .7rem;
-                padding: 1rem .2rem;
+                padding: 1rem .2rem 1rem .7rem;
                 border-top: 1px solid #CCCCCC;
                 border-bottom: 1px solid #CCCCCC;
                 font-weight: 400;
@@ -97,8 +97,27 @@ table{
 `
 
 function SendOrder() {
+    const {items, setItems, setEditItem, setEdit} = useContext(SendItemContext);
+    const clearAllItems = () => {
+        setItems([]);
+    }
+    const deleteItem = (id) => {
+        const newItems = items.filter(item => item.id !== id)
+        setItems([...newItems]);
+      }
+     
+     const ItemEdit = (item) =>{
+         setEdit(true);
+         setEditItem({
+             item : item
+         });
+         // console.log(editItem)
+     }
+
   return (
    <BOStyles>
+    {items.length > 0 && 
+    <>
     <h2>Order Summary</h2>
     <OrderCard>
     {/* <TableContainer> */}
@@ -113,67 +132,29 @@ function SendOrder() {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><img className='avi' src={avi} alt='avi' /></td>
-        <td className='item-name'>Yoyo Bitters</td>
-        <td className='quantity'>3</td>
-        <td className='comment'>i want to by food and i want it to be today’s own at ICM </td>
-        <td className='price'>2 in by 4 in</td>
-        <td><img className='table-icons' src={deleteIcon} alt='icon' /></td>
-        <td><img className='table-icons' src={editIcon} alt='icon' /></td>
-      </tr>
-      
-      <tr>
-        <td><img className='avi' src={avi} alt='avi' /></td>
-        <td className='item-name'>Yoyo Bitters</td>
-        <td className='quantity'>3</td>
-        <td className='comment'>i want to by food and i want it to be today’s own at ICM </td>
-        <td className='price'>2 in by 4 in</td>
-        <td><img className='table-icons' src={deleteIcon} alt='icon' /></td>
-        <td><img className='table-icons' src={editIcon} alt='icon' /></td>
-      </tr>
-      
-      <tr>
-        <td><img className='avi' src={avi} alt='avi' /></td>
-        <td className='item-name'>Yoyo Bitters</td>
-        <td className='quantity'>3</td>
-        <td className='comment'>i want to by food and i want it to be today’s own at ICM </td>
-        <td className='price'>2 in by 4 in</td>
-        <td><img className='table-icons' src={deleteIcon} alt='icon' /></td>
-        <td><img className='table-icons' src={editIcon} alt='icon' /></td>
-      </tr>
-      
-      <tr>
-        <td><img className='avi' src={avi} alt='avi' /></td>
-        <td className='item-name'>Yoyo Bitters</td>
-        <td className='quantity'>3</td>
-        <td className='comment'>i want to by food and i want it to be today’s own at ICM </td>
-        <td className='price'>2 in by 4 in</td>
-        <td><img className='table-icons' src={deleteIcon} alt='icon' /></td>
-        <td><img className='table-icons' src={editIcon} alt='icon' /></td>
-      </tr>
-    </tbody>
-    {/* <tfoot>
-        <tr>
-            <td><b>Total</b></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><b>₦135,000.00</b></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tfoot> */}
+        {items.map(item => (
+              <tr key={item.id}>
+            <td><img className='avi' src={ item.item_image ? URL.createObjectURL(item.item_image) : 'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg'} alt='img' /></td>
+            <td className='item-name'>{item.item_name}</td>
+            <td className='quantity'>{item.quantity}</td>
+            <td className='comment'>{item.comment} </td>
+            <td className='price'>{item.dimension_or_size}</td>
+            <td onClick={() => deleteItem(item.id)}><img className='table-icons' src={deleteIcon} alt='icon' /></td>
+        <td onClick={() => ItemEdit(item)}><img className='table-icons' src={editIcon} alt='icon' /></td>
+            </tr>
+        ))}
+     
+      </tbody>
   </table>
-{/* </TableContainer> */}
     </OrderCard>
     <div className="order-btn-group">
-    <StyledButton type='submit' className='clear'>
+    <StyledButton type='submit' className='clear' onClick={clearAllItems}>
                 <img src={clearIcon} alt="icon" /> 
                 <span>Clear all</span>
      </StyledButton>
     </div>
-   
+   </>
+    }
    </BOStyles>
   )
 }

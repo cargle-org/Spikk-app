@@ -10,7 +10,7 @@ import { StyledButtonLinks } from '../atoms/StyledButtons/index.styled'
 function Header(props) {
   const goToBuy = () => {
     const Buy = document.getElementById("buy-btn").offsetTop
-    console.log(Buy)
+    // console.log(Buy)
     window.scrollTo({
         top: Buy,
         left: 0,
@@ -19,7 +19,7 @@ function Header(props) {
 }
   const goToAbout = () => {
     const About = document.getElementById("about").offsetTop
-    console.log(About)
+    // console.log(About)
     window.scrollTo({
         top: About,
         left: 0,
@@ -37,7 +37,7 @@ function Header(props) {
     <div className='navigation'>
       <NavLink className='nav-link' to="/">Home</NavLink>
       <NavLink className='nav-link'to="#about" onClick={goToAbout}>About</NavLink>
-        <StyledButtonLinks onClick={goToBuy}>
+        <StyledButtonLinks className='header-btn' onClick={goToBuy}>
           <Link to="/#about"> Get Started <img src={arrdwn} alt="icon" /></Link>
         </StyledButtonLinks>
     </div>

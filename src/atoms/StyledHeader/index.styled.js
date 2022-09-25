@@ -33,6 +33,17 @@ export const StyledHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: end;
+    .header-btn{
+      a{
+        padding: .3rem 1rem;
+        font-size: .9rem;
+        font-weight: 600;
+        img{
+          width: 10px;
+          margin-top: 0.2rem;
+        }
+      }
+    }
     .nav-link{
       margin: 0 2rem 0 .5rem;
       text-decoration: none;

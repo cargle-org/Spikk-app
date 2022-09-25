@@ -15,7 +15,7 @@ flex-direction: column;
 align-items: center;
 position: absolute;
 z-index: 10;
-transform: translateX(-300px);
+transform: translateX(-1000px);
 transition: all 500ms ease-in;
 &.open{
     transform: translateX(0px) 
@@ -41,14 +41,15 @@ transition: all 500ms ease-in;
             margin: .5rem auto;
         }
         div{
+          margin-top: 0.7rem;
             a{
-                padding: .5rem 1.5rem;
-                font-size: .9rem;
-                font-weight: 700;
-                margin-top: .8rem;
-                img{
-                    width: 12px;
-                }
+              padding: .3rem 1rem;
+              font-size: .9rem;
+              font-weight: 600;
+              img{
+                width: 10px;
+                margin-top: 0.2rem;
+              }
             }
         }
     }
@@ -68,7 +69,7 @@ function MobileHeader(props) {
     <div className='navigation'>
       <NavLink className='nav-link' to="/">Home</NavLink>
       <NavLink className='nav-link'to="/About">About</NavLink>
-        <StyledButtonLinks>
+        <StyledButtonLinks className='header-btn'>
           <Link to="/Post"> Get Started <img src={arrdwn} alt="icon" /></Link>
         </StyledButtonLinks>
     </div>

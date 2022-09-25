@@ -16,7 +16,7 @@ function LandingPage() {
 
  const handleShowMenu = () => {
     setShowMenu(!showMenu)
-    console.log('click', showMenu)
+    // console.log('click', showMenu)
   }
   return (
    <LandingStyles>
