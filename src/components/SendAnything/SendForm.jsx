@@ -148,7 +148,7 @@ function SendForm() {
         initialValues: {
         item_name: '',
         item_image: 'image',
-        comment: 'Optional',
+        comment: '',
         dimension_or_size: '',
         quantity: '',
         },
@@ -160,7 +160,8 @@ function SendForm() {
                   .label('Dimension or Size')
                   .required(),
           comment: Yup.string()
-                  .label('Comment'),
+                  .label('Comment')
+                  .required(),
          quantity: Yup.number()
                   .label('Quantity')
                   .required(),
@@ -178,8 +179,8 @@ function SendForm() {
                 failedToast({
                     title: 'Could not add item.',
                     description: "Seems you already added this Item.",
-                    status: 'error',
-                    duration: 5000,
+                    status: 'warning',
+                    duration: 4000,
                     isClosable: true,
                   })
             } else{
@@ -193,7 +194,7 @@ function SendForm() {
                         title: ' Update Successful.',
                         description: "This Item has been updated in your order list.",
                         status: 'success',
-                        duration: 9000,
+                        duration: 4000,
                         isClosable: true,
                       });
                       setEdit(false)
@@ -207,7 +208,7 @@ function SendForm() {
                             title: 'Successful.',
                             description: "Your Item has been added to your order list.",
                             status: 'success',
-                            duration: 9000,
+                            duration: 4000,
                             isClosable: true,
                           })
 
@@ -295,15 +296,18 @@ function SendForm() {
               <div className="input-group">
                 {/* <img src={cart} alt="icon" /> */}
                 <input 
+                 className={formik.touched.comment && formik.errors.comment ? 'error' : ''}
                type="text"
                name='comment'
                id='comment'
-               placeholder='Comment(Optional)'
+               placeholder='Comment'
                value={formik.values.comment}
                onChange={formik.handleChange}
                onBlur={formik.handleBlur}
                />
                </div>
+               {formik.touched.comment && formik.errors.comment && (
+               <span className='errorText'>{formik.errors.comment}</span>)}
               </InputWrapper>
                 </div>
                 <StyledButton type='submit'>

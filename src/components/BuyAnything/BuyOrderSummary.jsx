@@ -6,6 +6,7 @@ import clearIcon from '../../assets/SVG/ClearIcon.svg'
 import { StyledButton } from '../../atoms/StyledButtons'
 import { useContext } from 'react'
 import ItemContext from '../../providers/ItemProvider'
+import { useToast } from '@chakra-ui/react'
 
 const BOStyles = styled.div`
 width: 100%;
@@ -99,6 +100,7 @@ table{
 `
 
 function BuyOrderSummary() {
+    const deleteToast = useToast();
 const {items, setItems, editItem, setEditItem, edit, setEdit} = useContext(ItemContext);
 const amountArr = items.map(item => {
     return item.unit_amount * item.quantity;
@@ -117,6 +119,12 @@ const clearAllItems = () => {
 const deleteItem = (id) => {
     const newItems = items.filter(item => item.id !== id)
     setItems([...newItems]);
+    deleteToast({
+        title: ' Item deleted!',
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      });
   }
 
 const ItemEdit = (item) =>{
@@ -124,6 +132,12 @@ const ItemEdit = (item) =>{
     setEditItem({
         item : item
     });
+    deleteToast({
+        title: ' Edit mode',
+        status: 'info',
+        duration: 4000,
+        isClosable: true,
+      });
     //  (editItem)
 }
 //  (items)

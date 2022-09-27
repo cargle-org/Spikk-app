@@ -5,6 +5,7 @@ import editIcon from '../../assets/SVG/EditIcon.svg'
 import clearIcon from '../../assets/SVG/ClearIcon.svg'
 import { StyledButton } from '../../atoms/StyledButtons'
 import SendItemContext from '../../providers/SendItemProvider'
+import { useToast } from '@chakra-ui/react'
 
 const MobileOrder = styled.div`
     margin: 3rem 1rem;
@@ -87,22 +88,35 @@ const MobileOrder = styled.div`
 `
 
 function MobileSendOrder() {
+    const deleteToast = useToast()
     const {items, setItems, setEditItem, setEdit} = useContext(SendItemContext);
     const clearAllItems = () => {
         setItems([]);
     }
     const deleteItem = (id) => {
-       const newItems = items.filter(item => item.id !== id)
-       setItems([...newItems]);
-     }
-     
-     const ItemEdit = (item) =>{
-         setEdit(true);
-         setEditItem({
-             item : item
-         });
-         //  (editItem)
-     }
+        const newItems = items.filter(item => item.id !== id)
+        setItems([...newItems]);
+        deleteToast({
+            title: ' Item deleted!',
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
+      }
+    
+    const ItemEdit = (item) =>{
+        setEdit(true);
+        setEditItem({
+            item : item
+        });
+        deleteToast({
+            title: ' Edit mode',
+            status: 'info',
+            duration: 4000,
+            isClosable: true,
+          });
+        //  (editItem)
+    }
     //   (items)
   return (
    <MobileOrder>

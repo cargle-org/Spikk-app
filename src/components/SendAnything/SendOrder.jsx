@@ -5,6 +5,7 @@ import editIcon from '../../assets/SVG/EditIcon.svg'
 import clearIcon from '../../assets/SVG/ClearIcon.svg'
 import { StyledButton } from '../../atoms/StyledButtons'
 import SendItemContext from '../../providers/SendItemProvider'
+import { useToast } from '@chakra-ui/react'
 
 const BOStyles = styled.div`
 width: 100%;
@@ -97,6 +98,7 @@ table{
 `
 
 function SendOrder() {
+    const deleteToast = useToast();
     const {items, setItems, setEditItem, setEdit} = useContext(SendItemContext);
     const clearAllItems = () => {
         setItems([]);
@@ -104,15 +106,27 @@ function SendOrder() {
     const deleteItem = (id) => {
         const newItems = items.filter(item => item.id !== id)
         setItems([...newItems]);
+        deleteToast({
+            title: ' Item deleted!',
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          });
       }
-     
-     const ItemEdit = (item) =>{
-         setEdit(true);
-         setEditItem({
-             item : item
-         });
-         //  (editItem)
-     }
+    
+    const ItemEdit = (item) =>{
+        setEdit(true);
+        setEditItem({
+            item : item
+        });
+        deleteToast({
+            title: ' Edit mode',
+            status: 'info',
+            duration: 4000,
+            isClosable: true,
+          });
+        //  (editItem)
+    }
 
   return (
    <BOStyles>

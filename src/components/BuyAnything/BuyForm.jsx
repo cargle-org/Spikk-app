@@ -153,7 +153,7 @@ function BuyForm() {
         initialValues: {
         item_name: '',
         item_image: 'image',
-        comment: 'Optional',
+        comment: '',
         unit_amount: '',
         quantity: '',
         total_amount: ''
@@ -166,7 +166,8 @@ function BuyForm() {
                   .label('Amount')
                   .required(),
           comment: Yup.string()
-                  .label('Comment'),
+                  .label('Comment')
+                  .required(),
          quantity: Yup.number()
                   .label('Quantity')
                   .required(),
@@ -182,8 +183,8 @@ function BuyForm() {
                 failedToast({
                     title: 'Could not add item.',
                     description: "Seems you already added this Item.",
-                    status: 'error',
-                    duration: 5000,
+                    status: 'warning',
+                    duration: 4000,
                     isClosable: true,
                   })
             } else{
@@ -197,7 +198,7 @@ function BuyForm() {
                         title: ' Update Successful.',
                         description: "This Item has been updated in your order list.",
                         status: 'success',
-                        duration: 9000,
+                        duration: 4000,
                         isClosable: true,
                       });
                       setEdit(false)
@@ -211,7 +212,7 @@ function BuyForm() {
                             title: 'Successful.',
                             description: "Your Item has been added to your order list.",
                             status: 'success',
-                            duration: 9000,
+                            duration: 4000,
                             isClosable: true,
                           })
 
@@ -307,14 +308,17 @@ function BuyForm() {
                <InputWrapper>
                <div className="input-group">
                 <input 
+                 className={formik.touched.comment && formik.errors.comment ? 'error' : ''}
                 type="text"
                 name='comment'
                 id='comment'
-                placeholder='Comment(Optional)'
+                placeholder='Comment'
                 value={formik.values.comment}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur} />
                </div>
+               {formik.touched.comment && formik.errors.comment && (
+               <span className='errorText'>{formik.errors.comment}</span>)}
                </InputWrapper>
                 </div>
                <StyledButton type='submit'>
