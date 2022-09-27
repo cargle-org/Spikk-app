@@ -73,10 +73,16 @@ const HeroBottomStyles = styled.section`
        }
        @media (max-width:560px){
         .hb-right{
+            text-align: center;
+            margin-top: -120px;
             .hb-head{
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+            .slider{
+                margin: 1rem auto;
             }
             .hb-buttons{
+                justify-content: center;
                 div{
                     a{
                         padding: .5rem;

@@ -6,6 +6,9 @@ import SendItemContext from '../../providers/SendItemProvider'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useToast } from '@chakra-ui/react'
+import axios from 'axios'
+import gif from '../../assets/Images/loading.gif'
+import { useState } from 'react'
 
 const BDFStyles = styled.div`
     width: 100%;
@@ -82,6 +85,11 @@ const BDFStyles = styled.div`
             margin-left: auto;
             font-size: .8rem;
             font-weight: 600;
+            img{
+                height: 25px;
+                width: 50px
+                margin: 0;
+            }
           }
     }
     @media (max-width: 660px){
@@ -114,7 +122,7 @@ const InputWrapper= styled.div`
 `;
 
 function SendDelivery() {
-
+    const [isLoading, setisLoading] = useState(false)
     const {items, setItems} = useContext(SendItemContext);
     const phoneRegExp = /^[/+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,8}$/
     const successToast = useToast();
@@ -123,9 +131,9 @@ function SendDelivery() {
     const formik = useFormik({
         initialValues: {
         source_address: '',
-        source_address_description: '',
+        source_address_description: 'Optional',
         destination_address: '',
-        destination_address_description: '',
+        destination_address_description: 'Optional',
         email: '',
         phone: ''
         },
@@ -151,21 +159,51 @@ function SendDelivery() {
         }),
        
         onSubmit: function (values, {resetForm}) {
-            const allValues = {
-                items : [...items], 
-                ...values
-            }
-        //   console.log(allValues)
-          successToast({
-            title: ' Request Successful.',
-            description: "Your oder will be processed.",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-          });
-          setItems([])
+            setisLoading(true)
+          const data = {
+            items : [...newItems],
+            user_id : '1',
+            ...values
+          }
+          console.log(data)
+
+          axios.post('https://spikk-api.herokuapp.com/api/sendorder/create', data)
+          .then(function(response){
+            successToast({
+                title: ' Request Successful.',
+                description: "Your oder will be processed.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              });
+              setisLoading(false)
+            setItems([])
             resetForm();
+          })
+          .catch(function(error){
+            failedToast({
+                title: ' Request Failed.',
+                description: "Your oder will be processed.",
+                status: 'failed',
+                duration: 9000,
+                isClosable: true,
+              });
+              setisLoading(false)
+          })
+         
         }
+      })
+
+
+      const newItems = items.map((item) =>{
+        const newItem = {
+            item_name : item.item_name,
+            item_image: item.item_image,
+            dimension_or_size: item.dimension_or_size,
+            comment: item.comment,
+            quantity: item.quantity,
+        }
+        return newItem
       })
 
   return (
@@ -263,7 +301,7 @@ function SendDelivery() {
           </InputWrapper>  
            </div>
             <Instructions />
-            <StyledButton type='submit'>Proceed and Confirm</StyledButton>
+            <StyledButton type='submit'>{isLoading ? <img src={gif} alt='img' /> : 'Proceed and Confirm' }</StyledButton>
             </form>
             </>
             }

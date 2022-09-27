@@ -115,7 +115,7 @@ function MobileSendOrder() {
     <div className="order" key={item.id}>
         <div className="order-top">
             <div className="ot-left">
-            <img className='avi' src={ item.item_image ? URL.createObjectURL(item.item_image) : 'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg'} alt='img' />
+            <img className='avi' src={'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg'} alt='img' />
             <h5 className='item-name'> {item.item_name} </h5>
             </div>
             <div className="ot-right">

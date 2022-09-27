@@ -10,7 +10,7 @@ justify-content: space-between;
 align-items: start;
 margin: 8rem 0 3rem;
 @media (max-width: 760px){
-  margin: 3rem 0;
+  margin: 3rem 1rem;
   flex-direction: column;
 }
 

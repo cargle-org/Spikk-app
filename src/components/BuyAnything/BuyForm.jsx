@@ -126,7 +126,7 @@ function BuyForm() {
           return;
         }
         setFile(file);
-        formik.setFieldValue('item_image', file);
+        formik.setFieldValue('item_image', file.name);
       }
       const updateItem = (updatedItem) => {
         // console.log(updatedItem)
@@ -152,8 +152,8 @@ function BuyForm() {
       const formik = useFormik({
         initialValues: {
         item_name: '',
-        item_image: '',
-        comment: '',
+        item_image: 'image',
+        comment: 'Optional',
         unit_amount: '',
         quantity: '',
         total_amount: ''
@@ -267,7 +267,7 @@ function BuyForm() {
                 changeHandler(e);
              }}
                 />
-                <label htmlFor='item_image' className='file-label'>{formik?.values?.item_image ?  formik.values?.item_image?.name : 'Attach an Image(optional)'} </label>
+                <label htmlFor='item_image' className='file-label'>{formik?.values?.item_image !== 'image' ?  formik.values?.item_image : 'Attach an Image(optional)'} </label>
                 <label htmlFor='item_image'><img src={uploader} alt="icon" /></label>
                </div>
                {formik.touched.item_image && formik.errors.item_image && (

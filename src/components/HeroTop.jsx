@@ -52,7 +52,7 @@ const HeroTopStyles = styled.section`
     width: 50%;
    }
    @media (max-width: 920px){
-    flex-direction: column-reverse;
+    flex-direction: column;
     .heroLeft,.heroRight{
         width: 100%;
     }
@@ -61,14 +61,25 @@ const HeroTopStyles = styled.section`
         background-size: cover;
         margin: 0;
     }
+    .heroLeft{
+        margin: 3rem 1rem;
+        padding-left: 0;
+    }
    }
 
    @media (max-width: 560px){
     .heroLeft{
+        text-align: center;
+        margin: 3rem 0;
         .hl-head{
-            font-size: 2.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .slider{
+            margin: 1rem auto;
         }
         .hl-buttons{
+            justify-content: center;
             div{
                 a{
                     padding: .5rem;
@@ -76,6 +87,9 @@ const HeroTopStyles = styled.section`
                 }
             }
         }
+    }
+    .heroRight{
+        height: 400px;
     }
    }
    @media (max-width: 375px){

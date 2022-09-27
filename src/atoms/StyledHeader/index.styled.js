@@ -45,7 +45,7 @@ export const StyledHeader = styled.div`
       }
     }
     .nav-link{
-      margin: 0 2rem 0 .5rem;
+      margin: 0 1rem 0 .5rem;
       text-decoration: none;
       color: #555555;
       padding: 1.5rem .5rem;

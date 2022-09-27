@@ -134,7 +134,7 @@ function SendOrder() {
     <tbody>
         {items.map(item => (
               <tr key={item.id}>
-            <td><img className='avi' src={ item.item_image ? URL.createObjectURL(item.item_image) : 'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg'} alt='img' /></td>
+            <td><img className='avi' src={'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg'} alt='img' /></td>
             <td className='item-name'>{item.item_name}</td>
             <td className='quantity'>{item.quantity}</td>
             <td className='comment'>{item.comment} </td>

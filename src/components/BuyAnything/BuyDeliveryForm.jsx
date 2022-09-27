@@ -7,6 +7,9 @@ import ItemContext from '../../providers/ItemProvider'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useToast } from '@chakra-ui/react'
+import axios from 'axios'
+import gif from '../../assets/Images/loading.gif'
+import { useState } from 'react'
 
 const BDFStyles = styled.div`
     width: 100%;
@@ -57,6 +60,11 @@ const BDFStyles = styled.div`
             margin-left: auto;
             font-size: .8rem;
             font-weight: 600;
+            img{
+                height: 25px;
+                width: 50px
+                margin: 0;
+            }
           }
     }
     @media (max-width: 660px){
@@ -89,11 +97,11 @@ function BuyDeliveryForm() {
     const {items, setItems} = useContext(ItemContext);
     const successToast = useToast();
     const failedToast = useToast();
-
+    const [isLoading, setisLoading] = useState(false)
     const formik = useFormik({
         initialValues: {
         home_address: '',
-        description: '',
+        description: 'Optional',
         email: '',
         phone: ''
         },
@@ -114,21 +122,53 @@ function BuyDeliveryForm() {
         }),
        
         onSubmit: function (values, {resetForm}) {
+            setisLoading(true)
             const allValues = {
-                items : [...items], 
+                items : [...newItems], 
+                user_id : '1',
                 ...values
             }
-          console.log(allValues)
-          successToast({
-            title: ' Request Successful.',
-            description: "Your oder will be processed.",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-          });
-          setItems([])
+            console.log(allValues)
+            axios.post('https://spikk-api.herokuapp.com/api/buyorder/create', allValues)
+            .then((response) => {
+                console.log(response)
+                successToast({
+                    title: ' Request Successful.',
+                    description: "Your oder will be processed.",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                  setisLoading(false)
+                  setItems([])
             resetForm();
+            })
+            .catch((error) => {
+                console.log(error)
+                setisLoading(false)
+                failedToast({
+                    title: ' Request Failed.',
+                    description: "Your oder will be processed.",
+                    status: 'failed',
+                    duration: 9000,
+                    isClosable: true,
+                  });
+            })
+         
+          
         }
+      })
+
+      const newItems = items.map((item) =>{
+        const newItem = {
+            item_name : item.item_name,
+            item_image: item.item_image,
+            unit_amount: item.unit_amount,
+            comment: item.comment,
+            quantity: item.quantity,
+            total_amount: item.total_amount
+        }
+        return newItem
       })
       
   return (
@@ -189,7 +229,7 @@ function BuyDeliveryForm() {
             </div>
            </div>
             <Instructions />
-            <StyledButton type='submit'>Proceed and Confirm</StyledButton>
+            <StyledButton type='submit'>{isLoading ? <img src={gif} alt="loader" /> : 'Proceed and Continue' }</StyledButton>
             </form>
         </>}
    </BDFStyles>
