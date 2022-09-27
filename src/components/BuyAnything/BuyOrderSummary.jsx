@@ -124,9 +124,9 @@ const ItemEdit = (item) =>{
     setEditItem({
         item : item
     });
-    // console.log(editItem)
+    //  (editItem)
 }
-// console.log(items)
+//  (items)
 let amountFormatter = Intl.NumberFormat('en-US');
   return (
    <BOStyles>

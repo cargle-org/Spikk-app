@@ -101,9 +101,9 @@ function MobileSendOrder() {
          setEditItem({
              item : item
          });
-         // console.log(editItem)
+         //  (editItem)
      }
-    //  console.log(items)
+    //   (items)
   return (
    <MobileOrder>
     {items.length > 0 && 

@@ -130,7 +130,7 @@ function HeroTop() {
 
     const goToBuy = () => {
         const Buy = document.getElementById("buy-btn").offsetTop
-        // console.log(Buy)
+        //  (Buy)
         window.scrollTo({
             top: Buy,
             left: 0,
@@ -140,7 +140,7 @@ function HeroTop() {
 
     const goToSell = () => {
         const Sell = document.getElementById("send-btn").offsetTop
-        // console.log(Sell)
+        //  (Sell)
         window.scrollTo({
             top: Sell,
             left: 0,

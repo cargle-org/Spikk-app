@@ -10,7 +10,6 @@ import { StyledButtonLinks } from '../atoms/StyledButtons/index.styled'
 function Header(props) {
   const goToBuy = () => {
     const Buy = document.getElementById("buy-btn").offsetTop
-    // console.log(Buy)
     window.scrollTo({
         top: Buy,
         left: 0,
@@ -19,7 +18,6 @@ function Header(props) {
 }
   const goToAbout = () => {
     const About = document.getElementById("about").offsetTop
-    // console.log(About)
     window.scrollTo({
         top: About,
         left: 0,

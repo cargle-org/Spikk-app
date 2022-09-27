@@ -129,10 +129,10 @@ function BuyForm() {
         formik.setFieldValue('item_image', file.name);
       }
       const updateItem = (updatedItem) => {
-        // console.log(updatedItem)
+        //  (updatedItem)
     
         const newItems = items.filter(e => e.id !== updatedItem.id)
-        // console.log([...newItems]);
+        //  ([...newItems]);
         setItems([...newItems, updatedItem]);
       }
     useEffect(() => {
@@ -175,8 +175,6 @@ function BuyForm() {
         }),
        
         onSubmit: function (values, {resetForm}) {
-            // console.log(values);
-            console.log(values)
            const filteredItems = items.filter(e => e.item_name.toLowerCase() === values.item_name.toLowerCase())
     
             if(filteredItems.length && !edit){

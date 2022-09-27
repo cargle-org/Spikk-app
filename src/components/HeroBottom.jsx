@@ -309,7 +309,6 @@ const AboutSpikk = styled.section`
 function HeroBottom() {
     const goToBuy = () => {
         const Buy = document.getElementById("buy-btn").offsetTop
-        // console.log(Buy)
         window.scrollTo({
             top: Buy,
             left: 0,
@@ -319,7 +318,6 @@ function HeroBottom() {
 
     const goToSend = () => {
         const Send = document.getElementById("send-btn").offsetTop
-        // console.log(Send)
         window.scrollTo({
             top: Send,
             left: 0,

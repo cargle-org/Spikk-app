@@ -128,10 +128,9 @@ function BuyDeliveryForm() {
                 user_id : '1',
                 ...values
             }
-            console.log(allValues)
+             (allValues)
             axios.post('https://spikk-api.herokuapp.com/api/buyorder/create', allValues)
             .then((response) => {
-                console.log(response)
                 successToast({
                     title: ' Request Successful.',
                     description: "Your oder will be processed.",
@@ -144,7 +143,6 @@ function BuyDeliveryForm() {
             resetForm();
             })
             .catch((error) => {
-                console.log(error)
                 setisLoading(false)
                 failedToast({
                     title: ' Request Failed.',

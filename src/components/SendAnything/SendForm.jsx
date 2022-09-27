@@ -116,7 +116,6 @@ function SendForm() {
     const { items, setItems, editItem,edit, setEdit} = useContext(SendItemContext)
     const changeHandler = (e) => {
         const imgfile = e.target.files[0];
-        console.log(imgfile)
         if (!imgfile.type.match(imageMimeType)) {
           alert("Image mime type is not valid");
           return;
@@ -125,10 +124,10 @@ function SendForm() {
         formik.setFieldValue('item_image', imgfile.name);
       }
       const updateItem = (updatedItem) => {
-        // console.log(updatedItem)
+        //  (updatedItem)
     
         const newItems = items.filter(e => e.id !== updatedItem.id)
-        // console.log([...newItems]);
+        //  ([...newItems]);
         setItems([...newItems, updatedItem]);
       }
     useEffect(() => {
@@ -170,8 +169,8 @@ function SendForm() {
         }),
        
         onSubmit: function (values, {resetForm}) {
-            // console.log(values);
-            // console.log(values)
+            //  (values);
+            //  (values)
            const filteredItems = items.filter(e => e.item_name.toLowerCase() === values.item_name.toLowerCase())
     
             if(filteredItems.length && !edit){
