@@ -25,8 +25,7 @@ function Buy() {
   return (
     <Card>
         <BuyStyles id='buy-btn'>
-        <h2 className="card-title">Buy Anything</h2>
-        <h5 className="card-subtitle">Enter your wants</h5>
+        <h2 className="card-title">Shop Anything</h2>
         </BuyStyles>
         <BuyForm/>
         <BuyOrderSummary />

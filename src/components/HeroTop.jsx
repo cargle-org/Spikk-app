@@ -157,7 +157,7 @@ function HeroTop() {
             <div className="hl-buttons">
                 <StyledButtonLinks variant='primary' onClick={goToBuy}>
                     <Link to='/buy'> <img src={cart} alt="icon" />
-                    Buy Anything</Link>
+                    Shop Anything</Link>
                 </StyledButtonLinks>
                 <StyledButtonLinks variant='primary' onClick={goToSell}>
                     <Link to='/send'> <img src={box} alt="" />

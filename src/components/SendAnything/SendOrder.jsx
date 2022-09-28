@@ -113,15 +113,25 @@ function SendOrder() {
             isClosable: true,
           });
       }
-    
+      const goToSell = () => {
+        const Sell = document.getElementById("send-btn").offsetTop
+        //  (Sell)
+        window.scrollTo({
+            top: Sell,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
     const ItemEdit = (item) =>{
         setEdit(true);
+        goToSell();
         setEditItem({
             item : item
         });
         deleteToast({
             title: ' Edit mode',
-            status: 'info',
+            status: 'warning',
             duration: 4000,
             isClosable: true,
           });

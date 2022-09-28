@@ -26,7 +26,6 @@ function Send() {
     <Card>
         <SendStyles  id='send-btn'>
         <h2 className="card-title">Send Anything</h2>
-        <h5 className="card-subtitle">Enter what you are sending</h5>
         </SendStyles>
         <SendForm />
         <SendOrder />

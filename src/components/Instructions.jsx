@@ -29,10 +29,11 @@ const InstructionStyles = styled.div`
     }
 `
 
-function Instructions() {
+function Instructions(props) {
+  
   return (
     <InstructionStyles>
-        <p>Make a minimum payment of ₦3000 to 2639222311 UBA Bank (Spikk Nigeria LTD) and one of our agent will reach out to you to finalize your order. Do well to download your receipt and make sure your account name correlate with the name you are using to make the purchase. Thank you</p>
+        <p>Make a payment of ₦{props.price} to Spikk flw  7812192534 Wema OR GTB Spikk Limited 0679104590.</p>
     </InstructionStyles>
   )
 }

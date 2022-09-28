@@ -109,7 +109,12 @@ const BuyFormStyles = styled.div`
     }
 `
 
-const InputWrapper= styled.div``;
+const InputWrapper= styled.div`
+.description{
+    font-size: .8rem;
+    color: #909090;
+}
+`;
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
@@ -153,7 +158,7 @@ function BuyForm() {
         initialValues: {
         item_name: '',
         item_image: 'image',
-        comment: '',
+        comment: 'Comment(Optional)',
         unit_amount: '',
         quantity: '',
         total_amount: ''
@@ -232,7 +237,7 @@ function BuyForm() {
 
   return (
     <BuyFormStyles>
-            <h3 className="form-head">Let us know what you want to buy</h3>
+            <h3 className="form-head">Let us know what you want to shop</h3>
             <div className="hr"></div>
            
             <form onSubmit={formik.handleSubmit}> 
@@ -308,7 +313,7 @@ function BuyForm() {
                <InputWrapper>
                <div className="input-group">
                 <input 
-                 className={formik.touched.comment && formik.errors.comment ? 'error' : ''}
+                 className={formik.touched.comment && formik.errors.comment ? 'error description' : 'description'}
                 type="text"
                 name='comment'
                 id='comment'
@@ -323,7 +328,7 @@ function BuyForm() {
                 </div>
                <StyledButton type='submit'>
                 <img src={addicon} alt="icon" /> 
-                <p>Add Item</p>
+                <p>{edit ? 'Update Item' : 'Add Item'}</p>
                 </StyledButton>
             </form>
         </BuyFormStyles>

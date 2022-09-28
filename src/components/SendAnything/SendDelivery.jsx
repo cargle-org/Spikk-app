@@ -68,6 +68,10 @@ const BDFStyles = styled.div`
             border-bottom-right-radius: 5px;
                 background-color: #F7F7F7;
                 padding: .7rem 1rem;
+                &.description{
+                    font-size: .8rem;
+                    color: #909090;
+                }
                 &.error{
                     border: 1px solid red;
                 }
@@ -92,6 +96,7 @@ const BDFStyles = styled.div`
             }
           }
     }
+
     @media (max-width: 660px){
         form{
             .form-input{
@@ -131,9 +136,9 @@ function SendDelivery() {
     const formik = useFormik({
         initialValues: {
         source_address: '',
-        source_address_description: 'Optional',
+        source_address_description: 'Address description (Optional)',
         destination_address: '',
-        destination_address_description: 'Optional',
+        destination_address_description: 'Address description(Optional)',
         email: '',
         phone: ''
         },
@@ -223,7 +228,7 @@ function SendDelivery() {
                 type="text"
                 name='source_address'
                 id='source_address'
-                placeholder='Your home Address'/>
+                placeholder='Pick-up Address'/>
           </div>
           {formik.touched.source_address && formik.errors.source_address && (
                <span className='errorText'>{formik.errors.source_address}</span>
@@ -233,7 +238,7 @@ function SendDelivery() {
          <div className="input-group">
             <h4>From:</h4>
           <input 
-           className={formik.touched.source_address_description && formik.errors.source_address_description ? 'error' : ''}
+           className={formik.touched.source_address_description && formik.errors.source_address_description ? 'error description' : 'description'}
            onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.source_address_description}
                 type="text"
                 name='source_address_description'
@@ -251,7 +256,7 @@ function SendDelivery() {
                 type="email"
                 name='email'
                 id='email'
-                placeholder='Reachable Email Address'/>
+                placeholder='Email Address'/>
                  {formik.touched.email && formik.errors.email && (
                <span className='errorText'>{formik.errors.email}</span>
                )}
@@ -263,7 +268,7 @@ function SendDelivery() {
                 type="tel"
                 name='phone'
                 id='phone'
-                placeholder='Reachable Phone Number'/>
+                placeholder='Phone Number'/>
                  {formik.touched.phone && formik.errors.phone && (
                <span className='errorText'>{formik.errors.phone}</span>
                )}
@@ -288,7 +293,7 @@ function SendDelivery() {
           <div className="input-group">
             <h4>To:</h4>
           <input 
-           className={formik.touched.destination_address_description && formik.errors.destination_address_description ? 'error' : ''}
+           className={formik.touched.destination_address_description && formik.errors.destination_address_description ? 'error description' : 'description'}
            onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.destination_address_description}
                 type="text"
                 name='destination_address_description'
@@ -300,7 +305,7 @@ function SendDelivery() {
                )}
           </InputWrapper>  
            </div>
-            <Instructions />
+            <Instructions price='700 plus estimated price of item you would like to send' />
             <StyledButton type='submit'>{isLoading ? <img src={gif} alt='img' /> : 'Proceed and Confirm' }</StyledButton>
             </form>
             </>

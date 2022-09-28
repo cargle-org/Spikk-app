@@ -43,6 +43,11 @@ const BDFStyles = styled.div`
             &.error{
                 border: 1px solid red;
             }
+            &.description{
+                font-size: .8rem;
+                color: #909090;
+            }
+
             border-radius: 5px;
                 background-color: #F7F7F7;
                 padding: .7rem 1rem;
@@ -101,7 +106,7 @@ function BuyDeliveryForm() {
     const formik = useFormik({
         initialValues: {
         home_address: '',
-        description: 'Optional',
+        description: 'Address description (Optional)',
         email: '',
         phone: ''
         },
@@ -128,14 +133,15 @@ function BuyDeliveryForm() {
                 user_id : '1',
                 ...values
             }
-             (allValues)
+            console.log(allValues)
             axios.post('https://spikk-api.herokuapp.com/api/buyorder/create', allValues)
             .then((response) => {
+                // console.log(response)
                 successToast({
                     title: ' Request Successful.',
-                    description: "Your oder will be processed.",
+                    description: "Your order will be processed.",
                     status: 'success',
-                    duration: 9000,
+                    duration: 5000,
                     isClosable: true,
                   });
                   setisLoading(false)
@@ -143,12 +149,13 @@ function BuyDeliveryForm() {
             resetForm();
             })
             .catch((error) => {
+                // console.log(error)
                 setisLoading(false)
                 failedToast({
                     title: ' Request Failed.',
                     description: "Your oder will be processed.",
                     status: 'failed',
-                    duration: 9000,
+                    duration: 5000,
                     isClosable: true,
                   });
             })
@@ -168,6 +175,18 @@ function BuyDeliveryForm() {
         }
         return newItem
       })
+
+      const amountArr = items.map(item => {
+        return item.unit_amount * item.quantity;
+    })
+    
+    const getTotal= (total, num) => {
+        return total + num;
+    }
+    
+    const Total = amountArr.reduce(getTotal, 0);
+    let amountFormatter = Intl.NumberFormat('en-US');
+      const estimatedPrice = amountFormatter.format(parseFloat(Total) + 700);
       
   return (
    <BDFStyles>
@@ -184,14 +203,14 @@ function BuyDeliveryForm() {
                 type="text"
                 name='home_address'
                 id='home_address'
-                placeholder='Your home Address'/>
+                placeholder='Address'/>
                 {formik.touched.home_address && formik.errors.home_address && (
                <span className='errorText'>{formik.errors.home_address}</span>
                )}
          </div>
           <div className="input-group">
           <input 
-             className={formik.touched.description && formik.errors.description ? 'error' : ''}
+             className={formik.touched.description && formik.errors.description ? 'error description' : 'description'}
              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.description}
                 type="text"
                 name='description'
@@ -208,7 +227,7 @@ function BuyDeliveryForm() {
                 type="email"
                 name='email'
                 id='email'
-                placeholder='Reachable Email Address'/>
+                placeholder='Email Address'/>
                 {formik.touched.email && formik.errors.email && (
                <span className='errorText'>{formik.errors.email}</span>
                )}
@@ -220,13 +239,13 @@ function BuyDeliveryForm() {
                 type="tel"
                 name='phone'
                 id='phone'
-                placeholder='Reachable Phone Number'/>
+                placeholder='Phone Number'/>
                  {formik.touched.phone && formik.errors.phone && (
                <span className='errorText'>{formik.errors.phone}</span>
                )}
             </div>
            </div>
-            <Instructions />
+            <Instructions price={estimatedPrice} />
             <StyledButton type='submit'>{isLoading ? <img src={gif} alt="loader" /> : 'Proceed and Continue' }</StyledButton>
             </form>
         </>}

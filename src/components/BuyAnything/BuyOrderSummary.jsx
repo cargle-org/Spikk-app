@@ -10,6 +10,12 @@ import { useToast } from '@chakra-ui/react'
 
 const BOStyles = styled.div`
 width: 100%;
+.note{
+    color: #17173F;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
 h2{
     font-weight: 600;
     font-size: .8rem;
@@ -127,14 +133,25 @@ const deleteItem = (id) => {
       });
   }
 
+  const goToBuy = () => {
+    const Buy = document.getElementById("buy-btn").offsetTop
+    //  (Buy)
+    window.scrollTo({
+        top: Buy,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
+
 const ItemEdit = (item) =>{
     setEdit(true);
+    goToBuy();
     setEditItem({
         item : item
     });
     deleteToast({
-        title: ' Edit mode',
-        status: 'info',
+        title: ' Edit your order',
+        status: 'warning',
         duration: 4000,
         isClosable: true,
       });
@@ -147,6 +164,7 @@ let amountFormatter = Intl.NumberFormat('en-US');
     {items.length > 0 && 
     <>
     <h2>Order Summary</h2>
+    <p className='note'><b>NOTE:</b> We currently deliver within Ogba(Lagos) at a flat fee of ₦700 only.</p>
     <OrderCard>
     {/* <TableContainer> */}
   <table>

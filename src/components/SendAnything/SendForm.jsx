@@ -104,7 +104,12 @@ const SendFormStyles = styled.div`
         }
     }
 `
-const InputWrapper= styled.div``;
+const InputWrapper= styled.div`
+.description{
+    font-size: .8rem;
+    color: #909090;
+}
+`;
 
 const imageMimeType = /image\/(png|jpg|jpeg)/i;
 
@@ -148,7 +153,7 @@ function SendForm() {
         initialValues: {
         item_name: '',
         item_image: 'image',
-        comment: '',
+        comment: 'Comment(Optional)',
         dimension_or_size: '',
         quantity: '',
         },
@@ -296,7 +301,7 @@ function SendForm() {
               <div className="input-group">
                 {/* <img src={cart} alt="icon" /> */}
                 <input 
-                 className={formik.touched.comment && formik.errors.comment ? 'error' : ''}
+                 className={formik.touched.comment && formik.errors.comment ? 'error description' : 'description'}
                type="text"
                name='comment'
                id='comment'
@@ -312,7 +317,7 @@ function SendForm() {
                 </div>
                 <StyledButton type='submit'>
                 <img src={addicon} alt="icon" /> 
-                <p>Add Item</p>
+                <p>{!edit ? 'Add Item' : 'Update Item'}</p>
                 </StyledButton>
             </form>
         </SendFormStyles>

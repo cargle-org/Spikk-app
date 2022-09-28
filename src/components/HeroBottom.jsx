@@ -330,10 +330,10 @@ function HeroBottom() {
   <HeroBottomStyles>
     <div className="hb-left"></div>
     <div className="hb-right">
-            <h1 className="hb-head">Buy and send 
+            <h1 className="hb-head"> Shop and Send 
             anything using Spikk</h1>
-            <p className="hb-text">Spikk is an on-demand errand and delivery service that helps you purchase, pickup & deliver items.</p>
-            <img className='slider' src={bottomSlider} alt="icon" />
+            <p className="hb-text">Spikk is an on-demand errand and delivery service that helps you purchase.</p>
+            {/* <img className='slider' src={bottomSlider} alt="icon" />
             <div className="hb-buttons">
                 <StyledButtonLinks variant='primary' onClick={goToBuy}>
                     <Link to='/buy'> <img src={cart} alt="icon" />
@@ -343,7 +343,7 @@ function HeroBottom() {
                     <Link to='/send'> <img src={box} alt="" />
                      Send Anything</Link>
                 </StyledButtonLinks>
-            </div>
+            </div> */}
             <img src={bottomBike} alt="icon" />
         </div>
   </HeroBottomStyles>
@@ -361,7 +361,7 @@ function HeroBottom() {
                     <div className="first">
                     <h1 className='highlight-no'>1</h1>
                     <h2 className='highlight-title'>Request/Match</h2>
-                    <p className="highlight-text"> List the item(s) you want to buy or send and we will connect you to the best Pickers that run errands and deliver top notch services.
+                    <p className="highlight-text"> List the item(s) you want to buy or send and we will connect you to the best Pikkers that run errands and deliver top notch services.
                     </p>
                     </div>
                     <div className="second"><h1 className='highlight-no'>2</h1>
