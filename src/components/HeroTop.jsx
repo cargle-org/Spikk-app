@@ -22,6 +22,14 @@ const HeroTopStyles = styled.section`
     .hl-text{
         font-weight: 500;
         font-size: 1.2rem;
+        margin-bottom: 1rem;
+        a{
+            color: #FBA819;
+            font weight: 400;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
     .slider{
         margin: 1rem 0;
@@ -164,6 +172,7 @@ function HeroTop() {
                      Send Anything</Link>
                 </StyledButtonLinks>
             </div>
+            <p  className="hl-text">Click <a href='https://wa.me/message/SJKH6SCCLMKVP1'>here</a> to Shop Via Whatsapp </p>
             <img src={topBike} alt="icon" />
         </div>
         <div className="heroRight"></div>

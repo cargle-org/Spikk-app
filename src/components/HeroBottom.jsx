@@ -153,10 +153,12 @@ const AboutSpikk = styled.section`
        .about-highlights{
         display: flex;
         align-items: center;
+        justify-content: center;
         width: 90%;
         margin: 3rem auto;
         padding: 2rem 0;
         .row1{
+            width: 20%;
             text-align: right;
             .first, .second{
                 margin-top: 2rem;
@@ -175,7 +177,7 @@ const AboutSpikk = styled.section`
                     margin: .5rem 0;
                 }
                 .highlight-text{
-                    width: 60%;
+                    width: 70%;
                     font-weight: 300;
                     font-size: .9rem;
                     margin-left: auto;
@@ -183,6 +185,7 @@ const AboutSpikk = styled.section`
             }
         }
         .row3{
+            width: 20%;
             text-align: left;
             .third, .fourth{
                 margin-top: 2rem;
@@ -215,7 +218,7 @@ const AboutSpikk = styled.section`
             background-size: contain;
             background-position: center;
             height: 550px;
-            width: 100%;
+            width: 60%;
         }
        }
 
@@ -234,6 +237,7 @@ const AboutSpikk = styled.section`
                 display: none;
             }
             .row1,.row3{
+                width: 80%;
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
@@ -360,16 +364,16 @@ function HeroBottom() {
                 <div className="row1">
                     <div className="first">
                     <h1 className='highlight-no'>1</h1>
-                    <h2 className='highlight-title'>Request/Match</h2>
-                    <p className="highlight-text"> List the item(s) you want to buy or send and we will connect you to the best Pikkers that run errands and deliver top notch services.
+                    <h2 className='highlight-title'>Request</h2>
+                    <p className="highlight-text"> List the item(s) you want to buy or send. 
                     </p>
                     </div>
                     <div className="second"><h1 className='highlight-no'>2</h1>
                     <h2 className='highlight-title'>
-                        Delivery
+                        Payments
                     </h2>
                     <p className="highlight-text">
-                    Get a real-time update on the status of your request from start to finish
+                    Confirm the order(s) and make payments.
                     </p>
                     </div>
                 </div>
@@ -378,10 +382,10 @@ function HeroBottom() {
                     <div className="third">
                     <h1 className='highlight-nos'>3</h1>
                     <h2 className='highlight-title'>
-                        Payments
+                        Deleivery
                     </h2>
                     <p className="highlight-text">
-                    You will be given information about how to make payment either through bank transfer or paystack or flutterwave.
+                    Your order will be processed and delivered promptly.
                     </p>
                     </div>
                     <div className="fourth">

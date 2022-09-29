@@ -5,6 +5,7 @@ import footerlogo from '../assets/SVG/FooterLogo.svg'
 const FooterCopyrights = styled.div`
     img{
         margin-bottom: 2rem;
+        width: 60px;
     }
     .copy{
         p{
