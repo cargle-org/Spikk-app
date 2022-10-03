@@ -1,11 +1,6 @@
 import React from 'react'
 import bottomBike from '../assets/SVG/Bike 1.svg'
-import bottomSlider from '../assets/SVG/Slider 2.svg'
-import box from '../assets/SVG/Package.svg'
-import cart from '../assets/SVG/Cart.svg'
 import styled from 'styled-components'
-import { StyledButtonLinks } from '../atoms/StyledButtons'
-import { Link } from '@chakra-ui/react'
 import HeroBottomBanner from '../assets/Images/HeroBottom.png'
 import bg from '../assets/Images/BG.png'
 import aboutbg from '../assets/Images/aboutBanner.png'
@@ -382,7 +377,7 @@ function HeroBottom() {
                     <div className="third">
                     <h1 className='highlight-nos'>3</h1>
                     <h2 className='highlight-title'>
-                        Deleivery
+                        Delivery
                     </h2>
                     <p className="highlight-text">
                     Your order will be processed and delivered promptly.

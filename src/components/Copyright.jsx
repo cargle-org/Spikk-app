@@ -25,7 +25,7 @@ function Copyright() {
         <img src={footerlogo} alt="logo" />
         <div className="copy">
         <b className='copyright'> &copy; {year} Spikk Technologies</b>
-        <p>Terms and conditions | Privacy Policy</p>
+        <p><a href='/privacy-policy'> Privacy Policy</a></p>
         </div>
     </FooterCopyrights>
   )

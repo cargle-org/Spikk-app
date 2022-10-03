@@ -172,7 +172,7 @@ function HeroTop() {
                      Send Anything</Link>
                 </StyledButtonLinks>
             </div>
-            <p  className="hl-text">Click <a href='https://wa.me/message/SJKH6SCCLMKVP1'>here</a> to Shop Via Whatsapp </p>
+            <p  className="hl-text">Click <a href='https://wa.me/message/SJKH6SCCLMKVP1'>here</a> to Request Via Whatsapp </p>
             <img src={topBike} alt="icon" />
         </div>
         <div className="heroRight"></div>

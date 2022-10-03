@@ -21,12 +21,20 @@ const FooterQuicklinks = styled.div`
 `
 
 function QuickLinks() {
+    const goToAbout = () => {
+        const About = document.getElementById("about").offsetTop
+        window.scrollTo({
+            top: About,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
   return (
    <FooterQuicklinks>
     <h3>Quicklinks</h3>
     <div className="quicklinks">
-        <Link to='/'> About</Link>
-        <Link to='/'> Contact Us </Link>
+        <Link to='#about' onClick={goToAbout}> About</Link>
+        <a href='https://wa.me/message/SJKH6SCCLMKVP1' target={'_blank'} rel="noreferrer"> Contact Us </a>
     </div>
    </FooterQuicklinks>
   )
