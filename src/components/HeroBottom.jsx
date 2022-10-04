@@ -67,7 +67,7 @@ const HeroBottomStyles = styled.section`
     .hb-left,
     .hb-right {
       width: 100%;
-      transform: translateX(0);
+      transform: ;
     }
     .hb-left {
       background-size: cover;

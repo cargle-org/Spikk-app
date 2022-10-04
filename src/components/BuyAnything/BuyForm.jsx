@@ -219,6 +219,7 @@ function BuyForm() {
     formik.setFieldValue("total_amount", unitTotal);
   }, [formik.values.unit_amount, formik.values.quantity]);
 
+  let amountFormatter = Intl.NumberFormat("en-US");
   return (
     <BuyFormStyles>
       <h3 className="form-head">Let us know what you want to buy</h3>
