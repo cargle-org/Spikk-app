@@ -1,12 +1,12 @@
-import React from 'react'
-import topBike from '../assets/SVG/Bike 2.svg'
-import topSlider from '../assets/SVG/Slider 1.svg'
-import box from '../assets/SVG/Package.svg'
-import cart from '../assets/SVG/Cart.svg'
-import styled from 'styled-components'
-import { StyledButtonLinks } from '../atoms/StyledButtons'
-import { Link } from '@chakra-ui/react'
-import HeroTopBanner from '../assets/Images/HeroTop.png'
+import React from "react";
+import topBike from "../assets/SVG/Bike 2.svg";
+import topSlider from "../assets/SVG/Slider 1.svg";
+import box from "../assets/SVG/Package.svg";
+import cart from "../assets/SVG/Cart.svg";
+import styled from "styled-components";
+import { StyledButtonLinks } from "../atoms/StyledButtons";
+import { Link } from "@chakra-ui/react";
+import HeroTopBanner from "../assets/Images/HeroTop.png";
 
 const HeroTopStyles = styled.section`
     display: flex;
@@ -132,52 +132,61 @@ const HeroTopStyles = styled.section`
         }
     }
    }
-`
+`;
 
 function HeroTop() {
+  const goToBuy = () => {
+    const Buy = document.getElementById("buy-btn").offsetTop;
+    //  (Buy)
+    window.scrollTo({
+      top: Buy,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
-    const goToBuy = () => {
-        const Buy = document.getElementById("buy-btn").offsetTop
-        //  (Buy)
-        window.scrollTo({
-            top: Buy,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
-
-    const goToSell = () => {
-        const Sell = document.getElementById("send-btn").offsetTop
-        //  (Sell)
-        window.scrollTo({
-            top: Sell,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
+  const goToSell = () => {
+    const Sell = document.getElementById("send-btn").offsetTop;
+    //  (Sell)
+    window.scrollTo({
+      top: Sell,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <HeroTopStyles>
-        <div className="heroLeft">
-            <h1 className="hl-head">Too tired to shop for groceries or make dinner?</h1>
-            <p className="hl-text">Spikk has got you covered. Spikk saves you time and energy so you can relax and have us run that errand or pick up and deliver.</p>
-            <img className='slider' src={topSlider} alt="icon" />
-            <div className="hl-buttons">
-                <StyledButtonLinks variant='primary' onClick={goToBuy}>
-                    <Link to='/buy'> <img src={cart} alt="icon" />
-                    Shop Anything</Link>
-                </StyledButtonLinks>
-                <StyledButtonLinks variant='primary' onClick={goToSell}>
-                    <Link to='/send'> <img src={box} alt="" />
-                     Send Anything</Link>
-                </StyledButtonLinks>
-            </div>
-            <p  className="hl-text">Click <a href='https://wa.me/message/SJKH6SCCLMKVP1'>here</a> to Shop Via Whatsapp </p>
-            <img src={topBike} alt="icon" />
+      <div className="heroLeft">
+        <h1 className="hl-head">Too tired to shop for groceries or make dinner?</h1>
+        <p className="hl-text">
+          Spikk has got you covered. Spikk saves you time and energy so you can relax and have us run that errand or pick up and deliver.
+        </p>
+        <img className="slider" src={topSlider} alt="icon" />
+        <div className="hl-buttons">
+          <StyledButtonLinks variant="primary" onClick={goToBuy}>
+            <Link to="/buy">
+              {" "}
+              <img src={cart} alt="icon" />
+              Shop Anything
+            </Link>
+          </StyledButtonLinks>
+          <StyledButtonLinks variant="primary" onClick={goToSell}>
+            <Link to="/send">
+              {" "}
+              <img src={box} alt="" />
+              Send Anything
+            </Link>
+          </StyledButtonLinks>
         </div>
-        <div className="heroRight"></div>
+        <p className="hl-text">
+          Request via <a href="https://wa.me/message/SJKH6SCCLMKVP1">Whatsapp</a>{" "}
+        </p>
+        <img src={topBike} alt="icon" />
+      </div>
+      <div className="heroRight"></div>
     </HeroTopStyles>
-  )
+  );
 }
 
-export default HeroTop
+export default HeroTop;
