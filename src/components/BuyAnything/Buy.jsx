@@ -2,9 +2,9 @@ import React from 'react'
 import Card from '../Card'
 import BuyForm from './BuyForm'
 import styled from 'styled-components'
-import BuyOrderSummary from './BuyOrderSummary'
-import BuyDeliveryForm from './BuyDeliveryForm'
-import MobileOrderSummary from './MobileOrderSummary'
+// import BuyOrderSummary from './BuyOrderSummary'
+// import BuyDeliveryForm from './BuyDeliveryForm'
+// import MobileOrderSummary from './MobileOrderSummary'
 
 const BuyStyles = styled.div`
     text-align: center;
@@ -28,9 +28,9 @@ function Buy() {
         <h2 className="card-title">Shop Anything</h2>
         </BuyStyles>
         <BuyForm/>
-        <BuyOrderSummary />
-        <MobileOrderSummary />
-        <BuyDeliveryForm />
+        {/* <BuyOrderSummary /> */}
+        {/* <MobileOrderSummary /> */}
+        {/* <BuyDeliveryForm /> */}
     </Card>
   )
 }

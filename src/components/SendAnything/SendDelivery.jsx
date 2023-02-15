@@ -170,7 +170,7 @@ function SendDelivery() {
             user_id : '1',
             ...values
           }
-           (data)
+          console.log(data)
 
           axios.post('https://spikk-api.herokuapp.com/api/sendorder/create', data)
           .then(function(response){

@@ -1,12 +1,12 @@
 import React from "react";
 import bottomBike from "../assets/SVG/Bike 1.svg";
-import bottomSlider from "../assets/SVG/Slider 2.svg";
-import box from "../assets/SVG/Package.svg";
-import cart from "../assets/SVG/Cart.svg";
+// import bottomSlider from "../assets/SVG/Slider 2.svg";
+// import box from "../assets/SVG/Package.svg";
+// import cart from "../assets/SVG/Cart.svg";
 import styled from "styled-components";
-import { StyledButtonLinks } from "../atoms/StyledButtons";
-import { Link } from "@chakra-ui/react";
-import HeroBottomBanner from "../assets/Images/HeroBottom.png";
+// import { StyledButtonLinks } from "../atoms/StyledButtons";
+// import { Link } from "@chakra-ui/react";
+// import HeroBottomBanner from "../assets/Images/HeroBottom.png";
 import HeroBottomBanner2 from "../assets/Images/Phone.png";
 import bg from "../assets/Images/BG.png";
 import aboutbg from "../assets/Images/aboutBanner.png";
@@ -41,6 +41,7 @@ const HeroBottomStyles = styled.section`
     .hb-text {
       font-weight: 500;
       font-size: 1.2rem;
+      margin-bottom: 1rem;
     }
     .slider {
       margin: 1rem 0;
@@ -296,6 +297,7 @@ const AboutSpikk = styled.section`
   @media (max-width: 560px) {
     .about-title {
       width: 100%;
+      margin: -5rem auto 3rem;
     }
     .about-subtitle1 {
       width: 90%;
@@ -321,23 +323,23 @@ const AboutSpikk = styled.section`
 `;
 
 function HeroBottom() {
-  const goToBuy = () => {
-    const Buy = document.getElementById("buy-btn").offsetTop;
-    window.scrollTo({
-      top: Buy,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+  // const goToBuy = () => {
+  //   const Buy = document.getElementById("buy-btn").offsetTop;
+  //   window.scrollTo({
+  //     top: Buy,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
 
-  const goToSend = () => {
-    const Send = document.getElementById("send-btn").offsetTop;
-    window.scrollTo({
-      top: Send,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+  // const goToSend = () => {
+  //   const Send = document.getElementById("send-btn").offsetTop;
+  //   window.scrollTo({
+  //     top: Send,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
   return (
     <>
       <Background>
@@ -345,7 +347,7 @@ function HeroBottom() {
           <div className="hb-left"></div>
           <div className="hb-right">
             <h1 className="hb-head"> Shop and Send anything using Spikk</h1>
-            <p className="hb-text">Spikk is an on-demand errand and delivery service that helps you purchase.</p>
+            <p className="hb-text">Spikk is an on-demand errand and delivery service that helps you purchase, pick up and deliver your items.</p>
             {/* <img className='slider' src={bottomSlider} alt="icon" />
             <div className="hb-buttons">
                 <StyledButtonLinks variant='primary' onClick={goToBuy}>

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { StyledButtonLinks } from "../atoms/StyledButtons";
 import { Link } from "@chakra-ui/react";
 import HeroTopBanner from "../assets/Images/HeroTop.png";
-
+import GooglePlay from "../assets/SVG/GooglePlay.svg"
 const HeroTopStyles = styled.section`
     display: flex;
     align-items: center;
@@ -30,6 +30,9 @@ const HeroTopStyles = styled.section`
                 text-decoration: underline;
             }
         }
+    }
+    .googlePlay{
+      margin-bottom: 1rem;
     }
     .slider{
         margin: 1rem 0;
@@ -82,6 +85,9 @@ const HeroTopStyles = styled.section`
         .hl-head{
             font-size: 2rem;
             text-align: center;
+        }
+        .googlePlay{
+          margin: 0 auto 1rem;
         }
         .slider{
             margin: 1rem auto;
@@ -158,7 +164,7 @@ function HeroTop() {
   return (
     <HeroTopStyles>
       <div className="heroLeft">
-        <h1 className="hl-head">Too tired to shop for groceries or make dinner?</h1>
+        <h1 className="hl-head">Have Spikk run your shopping errands, pick up and deliver your items.</h1>
         <p className="hl-text">
           Spikk has got you covered. Spikk saves you time and energy so you can relax and have us run that errand or pick up and deliver.
         </p>
@@ -181,7 +187,9 @@ function HeroTop() {
         </div>
         <p className="hl-text">
           Request via <a href="https://wa.me/message/SJKH6SCCLMKVP1">Whatsapp</a>{" "}
+          <a href="tel:+2349128491959">/ Call</a>
         </p>
+         <a href="https://play.google.com/store/apps/details?id=com.spikk" target="_blank" rel="noreferrer"><img className="googlePlay" src={GooglePlay} alt="img" /></a>
         <img src={topBike} alt="icon" />
       </div>
       <div className="heroRight"></div>
