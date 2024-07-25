@@ -25,12 +25,12 @@ function Copyright() {
       <img src={footerlogo} alt="logo" />
       <div className="copy">
         <b className="copyright"> &copy; {year} Spikk Technologies</b>
-        <p>
+        {/* <p>
           Terms and conditions |{" "}
           <a href="https://www.notion.so/spikk/Privacy-Policy-afd75068dcaa49c9b7138734639266a0 " className="">
             Privacy Policy
           </a>{" "}
-        </p>
+        </p> */}
       </div>
     </FooterCopyrights>
   );

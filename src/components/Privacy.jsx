@@ -24,7 +24,7 @@ const FooterQuicklinks = styled.div`
   }
 `;
 
-function QuickLinks() {
+function Privacy() {
   const goToAbout = () => {
     const About = document.getElementById("about").offsetTop;
     window.scrollTo({
@@ -35,23 +35,14 @@ function QuickLinks() {
   };
   return (
     <FooterQuicklinks>
-      <h3>Quicklinks</h3>
+      <h3>Policies</h3>
       <div className="quicklinks">
-        <Link to="#about" onClick={goToAbout}>
-          {" "}
-          About
-        </Link>
-        <a
-          href="https://wa.me/message/SJKH6SCCLMKVP1"
-          target={"_blank"}
-          rel="noreferrer"
-        >
-          {" "}
-          Contact Us{" "}
-        </a>
+        <Link to="/privacy"> Privacy Policy</Link>
+        <Link to="/tc">Terms and Conditions</Link>
+        <Link to="/restricted">Restricted Items</Link>
       </div>
     </FooterQuicklinks>
   );
 }
 
-export default QuickLinks;
+export default Privacy;
