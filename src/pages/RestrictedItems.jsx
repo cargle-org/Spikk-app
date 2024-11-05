@@ -4,7 +4,7 @@ import arrow from "../assets/SVG/Arrow.svg";
 import MobileHeader from "../components/MobileHeader";
 import Header from "../components/Header";
 
-const PrivacyContainer = styled.div`
+const RestrictedContainer = styled.section`
   width: 100%;
   max-width: 1100px;
   margin: 2rem auto;
@@ -42,7 +42,7 @@ const PrivacyContainer = styled.div`
   }
 `;
 
-const PrivacyTop = styled.div`
+const RestrictedTop = styled.div`
   width: 100%;
   text-align: right;
   a {
@@ -65,13 +65,13 @@ function RestrictedItems() {
     <>
       <MobileHeader className={showMenu ? "open" : ""} />
       <Header onClick={handleShowMenu} />
-      <PrivacyContainer>
-        <PrivacyTop>
+      <RestrictedContainer id="restricted">
+        <RestrictedTop>
           <a href="/">
             {" "}
             <img src={arrow} alt="" /> Go Back to the website
           </a>
-        </PrivacyTop>
+        </RestrictedTop>
         <h1>Policy on the Shopping/Delivery of Restricted Items</h1>
         <p className="bytext">Non-Exhaustive List of Examples:</p>
         <h2>Alcohol and Tobacco Products</h2>
@@ -227,7 +227,7 @@ function RestrictedItems() {
           We will not tolerate the use of abusive language or abusive attitudes
           towards our company or freelance workers.
         </p>
-      </PrivacyContainer>
+      </RestrictedContainer>
     </>
   );
 }

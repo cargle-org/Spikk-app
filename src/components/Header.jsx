@@ -27,9 +27,9 @@ function Header(props) {
 
   return (
     <StyledHeader>
-      <Link to="/" className="logo-group">
+      <a href="/" className="logo-group">
         <img src={logo} alt="logo" />
-      </Link>
+      </a>
       <div className="header-links">
         <div className="navigation">
           <NavLink className="nav-link" to="/">

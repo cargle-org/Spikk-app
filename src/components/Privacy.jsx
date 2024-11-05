@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const FooterQuicklinks = styled.div`
   h3 {
@@ -25,21 +24,13 @@ const FooterQuicklinks = styled.div`
 `;
 
 function Privacy() {
-  const goToAbout = () => {
-    const About = document.getElementById("about").offsetTop;
-    window.scrollTo({
-      top: About,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
   return (
     <FooterQuicklinks>
       <h3>Policies</h3>
       <div className="quicklinks">
-        <Link to="/privacy"> Privacy Policy</Link>
-        <Link to="/tc">Terms and Conditions</Link>
-        <Link to="/restricted">Restricted Items</Link>
+        <a href="/#privacy"> Privacy Policy</a>
+        <a href="/#tc">Terms and Conditions</a>
+        <a href="/#restricted">Restricted Items</a>
       </div>
     </FooterQuicklinks>
   );

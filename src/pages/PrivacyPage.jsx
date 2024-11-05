@@ -3,7 +3,7 @@ import styled from "styled-components";
 import arrow from "../assets/SVG/Arrow.svg";
 import MobileHeader from "../components/MobileHeader";
 import Header from "../components/Header";
-const PrivacyContainer = styled.div`
+const PrivacyContainer = styled.section`
   width: 100%;
   max-width: 1100px;
   margin: 2rem auto;
@@ -61,7 +61,7 @@ function PrivacyPage() {
     <>
       <MobileHeader className={showMenu ? "open" : ""} />
       <Header onClick={handleShowMenu} />
-      <PrivacyContainer>
+      <PrivacyContainer id="privacy">
         <PrivacyTop>
           <a href="/">
             {" "}

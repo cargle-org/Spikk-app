@@ -9,9 +9,9 @@ const FooterStyles = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin: 8rem 0 3rem;
+  padding: 8rem 6rem 3rem;
   @media (max-width: 760px) {
-    margin: 3rem 1rem;
+    padding: 3rem 1rem;
     flex-direction: column;
   }
 `;

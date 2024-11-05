@@ -4,7 +4,7 @@ import arrow from "../assets/SVG/Arrow.svg";
 import MobileHeader from "../components/MobileHeader";
 import Header from "../components/Header";
 
-const PrivacyContainer = styled.div`
+const TermsContainer = styled.section`
   width: 100%;
   max-width: 1100px;
   margin: 2rem auto;
@@ -47,7 +47,7 @@ const PrivacyContainer = styled.div`
   }
 `;
 
-const PrivacyTop = styled.div`
+const TermsTop = styled.div`
   width: 100%;
   text-align: right;
   a {
@@ -69,13 +69,13 @@ function Terms() {
     <>
       <MobileHeader className={showMenu ? "open" : ""} />
       <Header onClick={handleShowMenu} />
-      <PrivacyContainer>
-        <PrivacyTop>
+      <TermsContainer id="tc">
+        <TermsTop>
           <a href="/">
             {" "}
             <img src={arrow} alt="" /> Go Back to the website
           </a>
-        </PrivacyTop>
+        </TermsTop>
         <h1>Terms and Conditions</h1>
         <p className="updated">
           <strong>Last updated: </strong> 20th July, 2024.
@@ -216,7 +216,7 @@ function Terms() {
           at hi@spikk.co. By using Spikk’s services, you agree to these Terms
           and Conditions.
         </p>
-      </PrivacyContainer>
+      </TermsContainer>
     </>
   );
 }

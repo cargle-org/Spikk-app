@@ -68,7 +68,7 @@ const HeroBottomStyles = styled.section`
     .hb-left,
     .hb-right {
       width: 100%;
-      transform: ;
+      /* transform: ; */
     }
     .hb-left {
       background-size: cover;
@@ -347,41 +347,43 @@ function HeroBottom() {
           <div className="hb-left"></div>
           <div className="hb-right">
             <h1 className="hb-head"> Shop and Send anything using Spikk</h1>
-            <p className="hb-text">Spikk is an on-demand errand and delivery service that helps you purchase, pick up and deliver your items.</p>
-            {/* <img className='slider' src={bottomSlider} alt="icon" />
-            <div className="hb-buttons">
-                <StyledButtonLinks variant='primary' onClick={goToBuy}>
-                    <Link to='/buy'> <img src={cart} alt="icon" />
-                    Buy Anything</Link>
-                </StyledButtonLinks>
-                <StyledButtonLinks variant='primary' onClick={goToSend}>
-                    <Link to='/send'> <img src={box} alt="" />
-                     Send Anything</Link>
-                </StyledButtonLinks>
-            </div> */}
+            <p className="hb-text">
+              Spikk is an on-demand errand and delivery service that helps you
+              purchase, pick up and deliver your items.
+            </p>
             <img src={bottomBike} alt="icon" />
           </div>
         </HeroBottomStyles>
         <AboutSpikk id="about">
           <h1 className="about-title">
-            Spikk is an on-demand delivery platform that <i>delivers just anything</i> to customers.
+            Spikk is an on-demand delivery platform that{" "}
+            <i>delivers just anything</i> to customers.
           </h1>
           <div className="hr"></div>
           <p className="about-subtitle1">
-            From the comfort of your home/offices, Spikk connects you to dedicated shoppers that run errands and deliver top notch services.
+            From the comfort of your home/offices, Spikk connects you to
+            dedicated shoppers that run errands and deliver top notch services.
           </p>
-          <p className="about-subtitle2">Spikk is dedicated to empowering people, communities and making life a lot easier.</p>
+          <p className="about-subtitle2">
+            Spikk is dedicated to empowering people, communities and making life
+            a lot easier.
+          </p>
           <div className="about-highlights">
             <div className="row1">
               <div className="first">
                 <h1 className="highlight-no">1</h1>
                 <h2 className="highlight-title">Request</h2>
-                <p className="highlight-text"> List the item(s) you want to buy or send.</p>
+                <p className="highlight-text">
+                  {" "}
+                  List the item(s) you want to buy or send.
+                </p>
               </div>
               <div className="second">
                 <h1 className="highlight-no">2</h1>
                 <h2 className="highlight-title">Payments</h2>
-                <p className="highlight-text">Confirm the order(s) and make payments.</p>
+                <p className="highlight-text">
+                  Confirm the order(s) and make payments.
+                </p>
               </div>
             </div>
             <div className="row2"></div>
@@ -389,12 +391,17 @@ function HeroBottom() {
               <div className="third">
                 <h1 className="highlight-nos">3</h1>
                 <h2 className="highlight-title">Delivery</h2>
-                <p className="highlight-text">Your order will be processed and delivered promptly.</p>
+                <p className="highlight-text">
+                  Your order will be processed and delivered promptly.
+                </p>
               </div>
               <div className="fourth">
                 <h1 className="highlight-nos">4</h1>
                 <h2 className="highlight-title">Rate your experience</h2>
-                <p className="highlight-text">We want your next experience to be the best; let us know how we can improve our services.</p>
+                <p className="highlight-text">
+                  We want your next experience to be the best; let us know how
+                  we can improve our services.
+                </p>
               </div>
             </div>
           </div>
